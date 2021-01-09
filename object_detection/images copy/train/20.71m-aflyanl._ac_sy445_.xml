@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>20.71m-aflyanl._ac_sy445_.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/20.71m-aflyanl._ac_sy445_.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>137</width>
+		<height>445</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>maguary</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>2</xmin>
+			<ymin>2</ymin>
+			<xmax>137</xmax>
+			<ymax>445</ymax>
+		</bndbox>
+	</object>
+</annotation>

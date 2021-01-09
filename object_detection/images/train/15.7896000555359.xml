@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>15.7896000555359.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/15.7896000555359.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>200</width>
+		<height>200</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>maguary</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>66</xmin>
+			<ymin>1</ymin>
+			<xmax>132</xmax>
+			<ymax>198</ymax>
+		</bndbox>
+	</object>
+</annotation>

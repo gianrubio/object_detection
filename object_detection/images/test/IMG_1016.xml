@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>IMG_1016.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/test/IMG_1016.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>200</width>
+		<height>200</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tonica</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>55</xmin>
+			<ymin>77</ymin>
+			<xmax>117</xmax>
+			<ymax>177</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>14.black-princess-lanca-cerveja-em-lata-capa.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/14.black-princess-lanca-cerveja-em-lata-capa.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1200</width>
+		<height>675</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>blackprincess</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>492</xmin>
+			<ymin>45</ymin>
+			<xmax>707</xmax>
+			<ymax>631</ymax>
+		</bndbox>
+	</object>
+</annotation>

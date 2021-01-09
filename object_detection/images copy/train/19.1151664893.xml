@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>19.1151664893.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/19.1151664893.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>375</width>
+		<height>375</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tonica</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>132</xmin>
+			<ymin>95</ymin>
+			<xmax>254</xmax>
+			<ymax>291</ymax>
+		</bndbox>
+	</object>
+</annotation>

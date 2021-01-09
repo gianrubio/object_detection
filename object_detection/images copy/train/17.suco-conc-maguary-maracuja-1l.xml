@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>17.suco-conc-maguary-maracuja-1l.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/17.suco-conc-maguary-maracuja-1l.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>900</width>
+		<height>900</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>maguary</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>301</xmin>
+			<ymin>19</ymin>
+			<xmax>596</xmax>
+			<ymax>899</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>3.7898377661060.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/3.7898377661060.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1000</width>
+		<height>1000</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>blackprincess</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>334</xmin>
+			<ymin>77</ymin>
+			<xmax>699</xmax>
+			<ymax>973</ymax>
+		</bndbox>
+	</object>
+</annotation>

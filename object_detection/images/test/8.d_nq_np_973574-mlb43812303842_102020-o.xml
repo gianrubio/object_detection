@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>8.d_nq_np_973574-mlb43812303842_102020-o.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/test/8.d_nq_np_973574-mlb43812303842_102020-o.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>200</width>
+		<height>200</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tonica</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>51</xmin>
+			<ymin>7</ymin>
+			<xmax>145</xmax>
+			<ymax>190</ymax>
+		</bndbox>
+	</object>
+</annotation>
