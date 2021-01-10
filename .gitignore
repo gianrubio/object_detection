@@ -192,3 +192,4 @@ xcuserdata
 object_detection/trainning/pre_trainned_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8
 
 .DS_Store
+__pycache__
