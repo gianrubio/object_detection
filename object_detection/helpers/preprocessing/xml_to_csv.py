@@ -2,7 +2,7 @@ import os
 import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
-from pathlib import Path
+import argparse
 
 
 def xml_to_csv(path):
@@ -36,19 +36,34 @@ def xml_to_csv(path):
     return xml_df
 
 
-# def main():
-#     image_path = os.path.join(os.getcwd(), 'annotations')
-#     xml_df = xml_to_csv(image_path)
-#     xml_df.to_csv('raccoon_labels.csv', index=None)
-#     print('Successfully converted xml to csv.')
-
-cur_path = Path(__file__).parent
-
 def main():
-    for folder in ["train", "test"]:
-        xml_df = xml_to_csv(str((cur_path / f"../images/{folder}").resolve()))
-        xml_df.to_csv((cur_path / f"../images/{folder}_labels.csv").resolve(), index=None)
-        print("Successfully converted xml to csv.")
+    parser = argparse.ArgumentParser(
+        description="Partition dataset of images into training and testing sets",
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
+    parser.add_argument(
+        "-i",
+        "--imageDir",
+        help="Path to the folder where the image dataset is stored. If not specified, the CWD will be used.",
+        type=str,
+        default=os.getcwd(),
+    )
+    parser.add_argument(
+        "-o",
+        "--outputDir",
+        help="Path to the output folder where the train and test dirs should be created. "
+        "Defaults to the same directory as IMAGEDIR.",
+        type=str,
+        default=None,
+    )
+    args = parser.parse_args()
+
+    if args.outputDir is None:
+        args.outputDir = args.imageDir
+
+    xml_df = xml_to_csv(os.path.join(args.imageDir))
+    xml_df.to_csv(args.outputDir, index=None)
+    print(f"Successfully converted xml to csv {args.outputDir}.")
 
 
 main()
