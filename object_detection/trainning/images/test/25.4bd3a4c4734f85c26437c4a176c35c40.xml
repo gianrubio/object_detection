@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>25.4bd3a4c4734f85c26437c4a176c35c40.jpeg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/test/25.4bd3a4c4734f85c26437c4a176c35c40.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>360</width>
+		<height>360</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>petra</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>30</xmin>
+			<ymin>81</ymin>
+			<xmax>340</xmax>
+			<ymax>312</ymax>
+		</bndbox>
+	</object>
+</annotation>

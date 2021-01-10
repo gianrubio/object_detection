@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>21.maracuja1-f25a8989aa2c20388215682226983259-640-0.jpg</filename>
+	<path>/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/images/train/21.maracuja1-f25a8989aa2c20388215682226983259-640-0.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>200</width>
+		<height>200</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>maguary</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>75</xmin>
+			<ymin>9</ymin>
+			<xmax>135</xmax>
+			<ymax>180</ymax>
+		</bndbox>
+	</object>
+</annotation>
