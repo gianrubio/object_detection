@@ -32,7 +32,12 @@ rm -rf $PROJECT_ROOT_PATH/trainning/assets/
 mkdir -p $PROJECT_ROOT_PATH/trainning/assets/
 
 # Partition datase
-python $PROJECT_ROOT_PATH/helpers/preprocessing/partition_dataset.py -i $PROJECT_ROOT_PATH/trainning/images -r 0.15 -x
+python $PROJECT_ROOT_PATH/helpers/preprocessing/partition_dataset.py -i $PROJECT_ROOT_PATH/trainning/images -r 0.10 -x
+ls $PROJECT_ROOT_PATH/trainning/images/test|wc -l
+ls $PROJECT_ROOT_PATH/trainning/images/train|wc -l
+rm $PROJECT_ROOT_PATH/trainning/images/*.jpg
+rm $PROJECT_ROOT_PATH/trainning/images/*.xml
+
 for type in $(echo "train test")
 do
     echo $type
