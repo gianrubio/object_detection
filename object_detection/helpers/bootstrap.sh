@@ -1,7 +1,8 @@
 #!/bin/bash -xe
-PROJECT_ROOT_PATH=${HOME}/object_detection/object_detection
-MODEL=faster_rcnn_inception_resnet_v2_640x640_coco17_tpu-8
-PIPELINE_CONFIG_FILE=pipeline_${MODEL}.config
+export PROJECT_ROOT_PATH=${HOME}/object_detection/object_detection
+# export MODEL=faster_rcnn_inception_resnet_v2_640x640_coco17_tpu-8
+export MODEL=mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8
+export PIPELINE_CONFIG_FILE=pipeline_${MODEL}.config
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then    
     apt install git wget -y
@@ -13,7 +14,7 @@ git clone --depth 1 https://github.com/gianrubio/object_detection.git
 
 cd $PROJECT_ROOT_PATH/..
 python -m pip install .
-
+pip install labelme
 cd $PROJECT_ROOT_PATH
 
 ln -s $PROJECT_ROOT_PATH/.. /
