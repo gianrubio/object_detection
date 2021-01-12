@@ -1,20 +1,32 @@
 item {
   id: 1
-  name: 'maguary'
-}
-item {
-  id: 2
-  name: 'tonica'
-}
-item {
-  id: 3
-  name: 'petra'
-}
-item {
-  id: 4
   name: 'blackprincess'
 }
 item {
+  id: 2
+  name: 'brahma_puro_malte_350ml'
+}
+item {
+  id: 3
+  name: 'eisenbahn_garrafa_355ml'
+}
+item {
+  id: 4
+  name: 'heineken_lata_350ml'
+}
+item {
   id: 5
-  name: 'amstel'
+  name: 'brahma_chopp_350ml'
+}
+item {
+  id: 6
+  name: 'eisenbahn_pale_ale_355ml'
+}
+item {
+  id: 7
+  name: 'patagonia_lata_475ml'
+}
+item {
+  id: 8
+  name: 'devassa'
 }
