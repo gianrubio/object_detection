@@ -13,11 +13,10 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 git clone --depth 1 https://github.com/gianrubio/object_detection.git
 
-cd $PROJECT_ROOT_PATH/..
-python -m pip install .
 cd $PROJECT_ROOT_PATH
+cp $PROJECT_ROOT_PATH/setup.py .
+python -m pip install .
 
-ln -s $PROJECT_ROOT_PATH/.. /
 
 wget --quiet http://download.tensorflow.org/models/object_detection/tf2/20200711/$MODEL.tar.gz  
 mkdir -p $PROJECT_ROOT_PATH/trainning/models 

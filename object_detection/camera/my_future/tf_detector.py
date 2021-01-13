@@ -19,17 +19,19 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model",
     help="Folder that the Saved Model is Located In",
+    # default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8",
     default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/",
+
 )
 parser.add_argument(
     "--labels",
     help="Where the Labelmap is Located",
-    default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/saved_model/saved_model/saved_model.pbtxt",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/maps.pbtxt",
 )
 parser.add_argument(
     "--video",
     help="Name of the video to perform detection on. To run detection on multiple images, use --imagedir",
-    default="/Users/grubio/Downloads/image/camera/my_future/petra_tonica_maguary.mp4",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/my_future/cervejas_patagonia_brahma.mp4",
 )
 parser.add_argument(
     "--threshold",
@@ -71,7 +73,7 @@ start_time = time.time()
 detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)
 
 
-net = dnn.readNetFromTensorflow(PATH_TO_SAVED_MODEL))
+# net = dnn.readNetFromTensorflow(PATH_TO_SAVED_MODEL)
 
 
 end_time = time.time()
@@ -110,12 +112,13 @@ def load_image_into_numpy_array(path):
 print("Running inference for {}... ".format(VIDEO_PATHS), end="")
 
 video = cv2.VideoCapture(VIDEO_PATHS)
+# video = cv2.VideoCapture(0)
 while video.isOpened():
 
     # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
     # i.e. a single-column array, where each item in the column has the pixel RGB value
     ret, frame = video.read()
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_)
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     frame_expanded = np.expand_dims(frame_rgb, axis=0)
     imH, imW, _ = frame.shape
 
@@ -159,6 +162,7 @@ while video.isOpened():
 
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (10, 255, 0), 2)
             # Draw label
+            
             object_name = category_index[int(classes[i])][
                 "name"
             ]  # Look up object name from "labels" array using class index

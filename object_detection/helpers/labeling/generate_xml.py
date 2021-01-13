@@ -15,4 +15,3 @@ for path, dirs, files in os.walk(file_path):
         generate_file_labels(
             label_name, f"{file_name}", file_path, w, h, 0, 0, w, h
         )
-        # print(f"rename from {os.path.join(path, file)} to {os.path.join(path, file.replace(' ', ''))}")

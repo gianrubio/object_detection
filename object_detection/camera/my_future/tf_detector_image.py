@@ -24,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     "--labels",
     help="Where the Labelmap is Located",
-    default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/saved_model/saved_model/saved_model.pbtxt",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/maps.pbtxt",
 )
 parser.add_argument(
     "--video",
