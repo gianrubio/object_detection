@@ -19,12 +19,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model",
     help="Folder that the Saved Model is Located In",
-    default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/",
+    # default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/13-jan/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/exported-model-19-jan",
 )
 parser.add_argument(
     "--labels",
     help="Where the Labelmap is Located",
-    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/maps.pbtxt",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/13-jan/exported-model-12-jan/saved_model/saved_model.pbtxt",
 )
 parser.add_argument(
     "--video",
@@ -34,7 +35,7 @@ parser.add_argument(
 parser.add_argument(
     "--threshold",
     help="Minimum confidence threshold for displaying detected objects",
-    default=0.5,
+    default=0.01,
 )
 
 args = parser.parse_args()
@@ -85,7 +86,7 @@ category_index = label_map_util.create_category_index_from_labelmap(
 
 import numpy as np
 from PIL import Image
-%matplotlib inline
+
 import matplotlib.pyplot as plt
 import warnings
 
@@ -104,7 +105,7 @@ def load_image_into_numpy_array(path):
     """
     return np.array(Image.open(path))
 
-IMAGE_PATHS = ["/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/images/test/1.233933.jpg"]
+IMAGE_PATHS = ["/Users/grubio/Downloads/IMG_1061.jpg","/Users/grubio/Downloads/IMG_1062.jpg","/Users/grubio/Downloads/IMG_1063.jpg","/Users/grubio/Downloads/IMG_1064.jpg"]
 
 
 for image_path in IMAGE_PATHS:
@@ -155,6 +156,9 @@ for image_path in IMAGE_PATHS:
 
     plt.figure()
     plt.imshow(image_np_with_detections)
+    plt.show()
+    plt.savefig((f"{image_path}.jpg"))
+
     print('Done')
 plt.show()
 

@@ -20,7 +20,7 @@ parser.add_argument(
     "--model",
     help="Folder that the Saved Model is Located In",
     # default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8",
-    default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/13-jan/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/exported-model-19-jan",
 
 )
 parser.add_argument(
@@ -31,12 +31,12 @@ parser.add_argument(
 parser.add_argument(
     "--video",
     help="Name of the video to perform detection on. To run detection on multiple images, use --imagedir",
-    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/my_future/cervejas_patagonia_brahma.mp4",
+    default="/Users/grubio/Downloads/cervejas_patagonia_brahma.mp4",
 )
 parser.add_argument(
     "--threshold",
     help="Minimum confidence threshold for displaying detected objects",
-    default=0.5,
+    default=0.08,
 )
 
 args = parser.parse_args()
@@ -112,6 +112,11 @@ def load_image_into_numpy_array(path):
 print("Running inference for {}... ".format(VIDEO_PATHS), end="")
 
 video = cv2.VideoCapture(VIDEO_PATHS)
+width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
+height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5)
+size = (width, height)
+out = cv2.VideoWriter('/Users/grubio/Downloads/output.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 20.0, size)
+
 # video = cv2.VideoCapture(0)
 while video.isOpened():
 
@@ -172,7 +177,7 @@ while video.isOpened():
             )  # Example: 'person: 72%'
             labelSize, baseLine = cv2.getTextSize(
                 label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2
-            )  # Get font size
+            )  # Get font  
             label_ymin = max(
                 ymin, labelSize[1] + 10
             )  # Make sure not to draw label too close to top of window
@@ -203,10 +208,11 @@ while video.isOpened():
         2,
         cv2.LINE_AA,
     )
-    cv2.imshow("Object Detector", frame)
+    # cv2.imshow("Object Detector", frame)
 
-    if cv2.waitKey(1) == ord("q"):
-        break
-
+    # if cv2.waitKey(1) == ord("q"):
+    #     break
+    out.write(frame)
+out.release()
 cv2.destroyAllWindows()
 print("Done")
