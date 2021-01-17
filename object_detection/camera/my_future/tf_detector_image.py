@@ -20,7 +20,7 @@ parser.add_argument(
     "--model",
     help="Folder that the Saved Model is Located In",
     # default="/Users/grubio/.keras/datasets/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/",
-    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/13-jan/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/exported-model-19-jan",
+    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/",
 )
 parser.add_argument(
     "--labels",
@@ -35,7 +35,7 @@ parser.add_argument(
 parser.add_argument(
     "--threshold",
     help="Minimum confidence threshold for displaying detected objects",
-    default=0.01,
+    default=0.5,
 )
 
 args = parser.parse_args()
