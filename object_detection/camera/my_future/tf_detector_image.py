@@ -159,7 +159,14 @@ for image_path in IMAGE_PATHS:
     plt.show()
     plt.savefig((f"{image_path}.jpg"))
 
-    print('Done')
+
 plt.show()
 
 # sphinx_gallery_thumbnail_number = 2
+print('Done')
+# DISPLAYS OUTPUT IMAGE
+cv2.imshow('Object Detector', image_with_detections)
+# CLOSES WINDOW ONCE KEY IS PRESSED
+cv2.waitKey(0)
+# CLEANUP
+cv2.destroyAllWindows()

@@ -21,6 +21,7 @@ python3 -m pip install .
 
 wget --quiet http://download.tensorflow.org/models/object_detection/tf2/20200711/$MODEL.tar.gz  
 mkdir -p $PROJECT_ROOT_PATH/pre-trained-models
+mkdir -p $PROJECT_ROOT_PATH/exported-models
 mkdir -p $PROJECT_ROOT_PATH/models/my_$MODEL
 cp $PROJECT_ROOT_PATH/trainning/$PIPELINE_CONFIG_FILE $PROJECT_ROOT_PATH/models/my_$MODEL
 tar -xzf $MODEL.tar.gz 

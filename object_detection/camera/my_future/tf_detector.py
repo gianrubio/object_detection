@@ -7,47 +7,36 @@ Object Detection (On Video) From TF2 Saved Model
 
 import os
 
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logging (1)
+# os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logging (1)
 import pathlib
 import tensorflow as tf
 import cv2
 import argparse
 
-tf.get_logger().setLevel("ERROR")  # Suppress TensorFlow logging (2)
+tf.get_logger().setLevel("DEBUG")  # Suppress TensorFlow logging (2)
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model",
     help="Folder that the Saved Model is Located In",
-    # default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8",
-    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/13-jan/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/exported-model-19-jan",
-
+    default="exported-models/my_mobilenet_model",
 )
 parser.add_argument(
     "--labels",
     help="Where the Labelmap is Located",
-    default="/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/trainning/maps.pbtxt",
-)
-parser.add_argument(
-    "--video",
-    help="Name of the video to perform detection on. To run detection on multiple images, use --imagedir",
-    default="/Users/grubio/Downloads/cervejas_patagonia_brahma.mp4",
+    default="exported-models/my_mobilenet_model/saved_model/label_map.pbtxt",
 )
 parser.add_argument(
     "--threshold",
     help="Minimum confidence threshold for displaying detected objects",
-    default=0.08,
+    default=0.3,
 )
 
 args = parser.parse_args()
 # Enable GPU dynamic memory allocation
-# gpus = tf.config.experimental.list_physical_devices("GPU")
-# for gpu in gpus:
-#     tf.config.experimental.set_memory_growth(gpu, True)
-
-# PROVIDE PATH TO IMAGE DIRECTORY
-VIDEO_PATHS = args.video
-
+gpus = tf.config.experimental.list_physical_devices("GPU")
+for gpu in gpus:
+    tf.config.experimental.set_memory_growth(gpu, True)
 
 # PROVIDE PATH TO MODEL DIRECTORY
 PATH_TO_MODEL_DIR = args.model
@@ -71,11 +60,7 @@ start_time = time.time()
 
 # Load saved model and build the detection function
 detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)
-
-
-# net = dnn.readNetFromTensorflow(PATH_TO_SAVED_MODEL)
-
-
+print(f"Loaded model {PATH_TO_SAVED_MODEL}")
 end_time = time.time()
 elapsed_time = end_time - start_time
 print("Done! Took {} seconds".format(elapsed_time))
@@ -87,6 +72,8 @@ print("Done! Took {} seconds".format(elapsed_time))
 category_index = label_map_util.create_category_index_from_labelmap(
     PATH_TO_LABELS, use_display_name=True
 )
+print("Labels loaded")
+
 
 import numpy as np
 from PIL import Image
@@ -109,21 +96,19 @@ def load_image_into_numpy_array(path):
     return np.array(Image.open(path))
 
 
-print("Running inference for {}... ".format(VIDEO_PATHS), end="")
+print("Running inference for Webcam", end="")
 
-video = cv2.VideoCapture(VIDEO_PATHS)
-width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
-height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5)
-size = (width, height)
-out = cv2.VideoWriter('/Users/grubio/Downloads/output.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 20.0, size)
+# Initialize Webcam
+videostream = cv2.VideoCapture("/Users/grubio/Downloads/image/multiple-image-detection/models/research/object_detection/camera/my_future/cervejas_patagonia_brahma.mp4")
+# ret = videostream.set(3, 1280)
+# ret = videostream.set(4, 720)
 
-# video = cv2.VideoCapture(0)
-while video.isOpened():
+while True:
 
     # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
     # i.e. a single-column array, where each item in the column has the pixel RGB value
-    ret, frame = video.read()
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    ret, frame = videostream.read()
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
     frame_expanded = np.expand_dims(frame_rgb, axis=0)
     imH, imW, _ = frame.shape
 
@@ -167,7 +152,6 @@ while video.isOpened():
 
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (10, 255, 0), 2)
             # Draw label
-            
             object_name = category_index[int(classes[i])][
                 "name"
             ]  # Look up object name from "labels" array using class index
@@ -177,7 +161,7 @@ while video.isOpened():
             )  # Example: 'person: 72%'
             labelSize, baseLine = cv2.getTextSize(
                 label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2
-            )  # Get font  
+            )  # Get font size
             label_ymin = max(
                 ymin, labelSize[1] + 10
             )  # Make sure not to draw label too close to top of window
@@ -200,7 +184,7 @@ while video.isOpened():
 
     cv2.putText(
         frame,
-        "Total Detections : " + str(count),
+        "Objects Detected : " + str(count),
         (10, 25),
         cv2.FONT_HERSHEY_SIMPLEX,
         1,
@@ -208,11 +192,10 @@ while video.isOpened():
         2,
         cv2.LINE_AA,
     )
-    # cv2.imshow("Object Detector", frame)
+    cv2.imshow("Objects Detector", frame)
 
-    # if cv2.waitKey(1) == ord("q"):
-    #     break
-    out.write(frame)
-out.release()
+    if cv2.waitKey(1) == ord("q"):
+        break
+
 cv2.destroyAllWindows()
 print("Done")
